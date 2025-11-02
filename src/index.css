@@ -89,7 +89,6 @@ body {
   gap: 30px;
 }
 
-/* 768px dos columnas */
 @media (min-width: 768px) {
   .pdp-layout {
     grid-template-columns: 1fr 1fr;
@@ -175,4 +174,25 @@ body {
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+.cart-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.reset-cart-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #999;
+  cursor: pointer;
+  padding: 0 5px;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+
+.reset-cart-btn:hover {
+  color: #ff0000;
 }

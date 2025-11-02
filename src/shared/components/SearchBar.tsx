@@ -2,7 +2,6 @@ import { type FC, useState, useEffect } from "react";
 
 interface Props {
   placeholder?: string;
-  // El PDF pide filtrado en tiempo real, por lo que notificamos en cada cambio.
   onSearchChange: (query: string) => void;
 }
 
