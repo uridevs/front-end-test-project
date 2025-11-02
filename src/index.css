@@ -25,6 +25,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .header-title {
@@ -215,6 +217,9 @@ body {
   gap: 4px;
   font-size: 0.9rem;
   color: #555;
+  flex-basis: 90%;
+  order: 3;
+  justify-content: center;
 }
 
 .breadcrumbs a {
@@ -239,6 +244,14 @@ body {
 }
 
 @media (min-width: 768px) {
+  .app-header {
+    flex-wrap: nowrap;
+  }
+  .breadcrumbs {
+    flex-basis: auto;
+    order: 0;
+    justify-content: flex-start;
+  }
   .pdp-layout {
     grid-template-columns: 1fr 1fr;
   }
