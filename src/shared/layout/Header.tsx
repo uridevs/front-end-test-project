@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
+import { useCart } from "../context/useCart";
 
 export const Header = () => {
-  // const { cartCount } = useCart(); // TODO:
-  const cartCount = 0;
+  const { cartCount } = useCart();
 
   return (
     <header className="app-header">
@@ -17,7 +17,7 @@ export const Header = () => {
       </div>
 
       {/* items counter */}
-      <span>Cart: ({cartCount})</span>
+      <span>Carrito: ({cartCount})</span>
     </header>
   );
 };
