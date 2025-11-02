@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { Header } from "./shared/layout/Header";
 
-// Importamos los nuevos componentes de página
 import { ProductListPage } from "./pages/ProductList/ProductListPage";
 import { ProductDetailPage } from "./pages/ProductDetail/ProductDetailPage";
 

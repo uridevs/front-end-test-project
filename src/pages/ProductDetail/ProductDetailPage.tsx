@@ -4,6 +4,7 @@ import { getProductDetail } from "../../products/actions/get-product-detail.acti
 import { type ProductDetail } from "../../products/interfaces/product.interface";
 import { ProductDescription } from "../../products/components/ProductDescription";
 import { ProductActions } from "../../products/components/ProductActions";
+import { ProductImage } from "../../products/components/ProductImage";
 
 export const ProductDetailPage: FC = () => {
   const [product, setProduct] = useState<ProductDetail | null>(null);
@@ -47,13 +48,10 @@ export const ProductDetailPage: FC = () => {
 
       <div className="pdp-layout">
         {/* Imagen */}
-        <div className="pdp-image-wrapper">
-          <img
-            src={product.imgUrl}
-            alt={`${product.brand} ${product.model}`}
-            className="pdp-image"
-          />
-        </div>
+        <ProductImage
+          imgUrl={product.imgUrl}
+          altText={`${product.brand} ${product.model}`}
+        />
 
         {/* Detalles y actions */}
         <div className="pdp-info-wrapper">

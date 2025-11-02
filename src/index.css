@@ -34,8 +34,26 @@ body {
 
 .product-list-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 20px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 480px) {
+  .product-list-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .product-list-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .product-list-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .product-item {
@@ -133,4 +151,28 @@ body {
 
 .add-to-cart-btn:hover {
   background-color: #0056b3;
+}
+
+.plp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.plp-header h2 {
+  margin: 0;
+}
+
+.search-bar-container {
+  flex-basis: 33%;
+  max-width: 400px;
+}
+
+.search-bar-container input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
