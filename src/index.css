@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -38,24 +44,6 @@ body {
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 480px) {
-  .product-list-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 768px) {
-  .product-list-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .product-list-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
 .product-item {
   border: 1px solid #eee;
   border-radius: 8px;
@@ -87,12 +75,6 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   gap: 30px;
-}
-
-@media (min-width: 768px) {
-  .pdp-layout {
-    grid-template-columns: 1fr 1fr;
-  }
 }
 
 .pdp-image-wrapper {
@@ -154,8 +136,9 @@ body {
 
 .plp-header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
   margin-bottom: 10px;
 }
 
@@ -164,8 +147,7 @@ body {
 }
 
 .search-bar-container {
-  flex-basis: 33%;
-  max-width: 400px;
+  width: 90%;
 }
 
 .search-bar-container input {
@@ -200,4 +182,85 @@ body {
 .add-to-cart-btn:disabled {
   background-color: #999;
   cursor: not-allowed;
+}
+
+.header-title,
+.cart-container,
+.back-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.back-link {
+  text-decoration: none;
+  color: #007bff;
+  margin-bottom: 15px;
+  display: inline-flex;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.reset-cart-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.breadcrumbs a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+@media (min-width: 480px) {
+  .product-list-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .pdp-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+  .product-list-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .plp-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .search-bar-container {
+    width: auto;
+    flex-basis: 33%;
+    max-width: 400px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .product-list-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }

@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
+
+import { Smartphone, ShoppingCart, X } from "lucide-react";
+
 import { useCart } from "../context/useCart";
+import { Breadcrumbs } from "./Breadcrumbs";
 
 export const Header = () => {
   const { cartCount, setCartCount } = useCart();
@@ -16,15 +20,15 @@ export const Header = () => {
   return (
     <header className="app-header">
       <Link to="/" className="header-title">
-        Technology Shop
+        <Smartphone size={24} />
+        <span style={{ marginLeft: "8px" }}>MobileShop</span>
       </Link>
 
-      <div>
-        <span>[LOGO]</span>
-      </div>
+      <Breadcrumbs />
 
       <div className="cart-container">
-        <span>Carrito: ({cartCount})</span>
+        <ShoppingCart size={24} />
+        <span>({cartCount})</span>
 
         {cartCount > 0 && (
           <button
@@ -32,7 +36,7 @@ export const Header = () => {
             onClick={handleResetCart}
             title="Vaciar carrito"
           >
-            &times;
+            <X size={18} />
           </button>
         )}
       </div>

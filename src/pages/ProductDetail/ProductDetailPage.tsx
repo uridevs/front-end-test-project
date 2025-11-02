@@ -1,5 +1,6 @@
 import { type FC, useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 import { getProductDetail } from "../../products/actions/get-product-detail.action";
 import { type ProductDetail } from "../../products/interfaces/product.interface";
 import { ProductDescription } from "../../products/components/ProductDescription";
@@ -40,7 +41,10 @@ export const ProductDetailPage: FC = () => {
 
   return (
     <section>
-      <Link to="/">&larr; Volver a la lista</Link>
+      <Link to="/" className="back-link">
+        <ArrowLeft size={18} />
+        Volver a la lista
+      </Link>
       <h2>
         {product.brand} - {product.model}
       </h2>
