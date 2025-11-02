@@ -20,7 +20,7 @@ export const Header = () => {
       </Link>
 
       <div>
-        <span>...</span>
+        <span>[LOGO]</span>
       </div>
 
       <div className="cart-container">
