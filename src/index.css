@@ -196,3 +196,8 @@ body {
 .reset-cart-btn:hover {
   color: #ff0000;
 }
+
+.add-to-cart-btn:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}

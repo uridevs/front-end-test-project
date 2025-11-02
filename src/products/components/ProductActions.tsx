@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const ProductActions: FC<Props> = ({ product }) => {
-  const { id, options } = product;
+  const { id, options, price } = product;
   const { colors, storages } = options;
 
   const [selectedStorage, setSelectedStorage] = useState<number>(
@@ -16,11 +16,12 @@ export const ProductActions: FC<Props> = ({ product }) => {
   );
   const [selectedColor, setSelectedColor] = useState<number>(colors[0]?.code);
   const [isAdding, setIsAdding] = useState(false);
+  const isAvailable = !!price;
 
-  // 1. Obtenemos el 'setter' del contexto
   const { setCartCount } = useCart();
 
   const handleAddToCart = async () => {
+    if (!isAvailable) return;
     setIsAdding(true);
     try {
       const payload = {
@@ -31,7 +32,8 @@ export const ProductActions: FC<Props> = ({ product }) => {
       // La llamada a la api "falla" por CORS si añadimos {withCredentials: true} al post y siempre devuelve 1 si no lo enviamos, por lo que manejaremos manualmente el estado del contador del carrito
       await addToCart(payload);
 
-      // incrementamos NUESTRO contador local
+      // incrementamos NUESTRO contador local en lugar de usar la respuesta
+      // setCartCount(response.count);
       setCartCount((prevCount) => prevCount + 1);
 
       alert(`¡Producto añadido!`);
@@ -78,9 +80,13 @@ export const ProductActions: FC<Props> = ({ product }) => {
       <button
         className="add-to-cart-btn"
         onClick={handleAddToCart}
-        disabled={isAdding}
+        disabled={isAdding || !isAvailable}
       >
-        {isAdding ? "Añadiendo..." : "Añadir a la cesta"}
+        {isAdding
+          ? "Añadiendo..."
+          : isAvailable
+          ? "Añadir a la cesta"
+          : "No disponible temporalmente"}
       </button>
     </div>
   );
