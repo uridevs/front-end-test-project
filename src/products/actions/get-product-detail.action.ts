@@ -7,11 +7,9 @@ export const getProductDetail = async (id: string): Promise<ProductDetail> => {
 
   const cachedDetail = getCache<ProductDetail>(PRODUCT_DETAIL_CACHE_KEY);
   if (cachedDetail) {
-    console.log(`Datos de detalle ${id} obtenidos desde la CACHÉ`);
     return cachedDetail;
   }
 
-  console.log(`Datos de detalle ${id} obtenidos desde la API`);
   const response = await itemsApi.get<ProductDetail>(`/api/product/${id}`);
   
   setCache(PRODUCT_DETAIL_CACHE_KEY, response.data);
